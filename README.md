@@ -1,4 +1,4 @@
 skyefreeman.github.io
 =====================
 
-Skye's website
+Skye's website.
