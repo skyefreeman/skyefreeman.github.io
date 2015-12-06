@@ -113,28 +113,18 @@ div {
     margin-bottom: 150px;
 }
 
+/* Title */
+h1 {
+    font-size: 62px;
+}
 
-
+/* Subtitle */
 .lead {
     padding: 0 30px;
-    font-size: 20px;
+    font-size: 17px;
     color: rgba(255,255,255,.75);
-}
-
-.cover .btn-lg {
-    padding: 10px 10px;
-}
-
-h1 {
-    
-    font-size: 55px;
-}
-
-p {
     font-style: italic;
 }
-
-
 
 /*
  * Footer
