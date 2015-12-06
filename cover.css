@@ -27,7 +27,6 @@ a:hover {
 html,
 body {
     height: 100%;
-    /*background-image: url("assets/Elegant_Background-4.jpg");*/
     background-image: url("assets/stardust.png"); 
     background-color: #272827;
 }
@@ -114,6 +113,8 @@ div {
     margin-bottom: 150px;
 }
 
+
+
 .lead {
     padding: 0 30px;
     font-size: 20px;
@@ -133,15 +134,19 @@ p {
     font-style: italic;
 }
 
+
+
 /*
  * Footer
  */
 
 .mastfoot {
-    color: #999; /* IE8 proofing */
-    color: rgba(255,255,255,.6);
+    margin-bottom: 10px;
 }
 
+.mastfoot a{
+    margin: 10px;
+}
 /*
  * Affix and center
  */
