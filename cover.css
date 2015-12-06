@@ -140,13 +140,16 @@ p {
  * Footer
  */
 
-.mastfoot {
-    margin-bottom: 10px;
-}
-
-.mastfoot a{
+.footer a{
     margin: 10px;
 }
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
 /*
  * Affix and center
  */
