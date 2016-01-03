@@ -1,17 +1,18 @@
 # External gems
 gems:
+  - jekyll-archives
   - jekyll-sitemap
 
 exclude:
   - "/vendor/"
 
 # Site settings
-title: Centrarium
-subtitle: "A simple yet classy theme for your Jekyll website or blog"
+title: Skye Freeman
+subtitle: "iOS Developer | Writer |  Professional Music Listener"
 email: skyefreeman@icloud.com
 name: Skye Freeman
 description: > 
-  Skye Freeman is a professional music listener, iOS Developer, writer, and lover of a great view.
+  Skye Freeman is an iOS Developer and writer.  He loves to jam to a great tune, and can probably be found at the gym or looking at great view.
   
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
@@ -56,16 +57,6 @@ descriptions:
 # Social settings are used in two places:
 # * In the footer, as links to your personal profiles
 # * After each blog post for sharing widgets
-# 
-# Example:
-# 
-# social:
-#   - name: Twitter                         # Name of the service
-#     icon: twitter                         # Font Awesome icon to use (minus fa- prefix)
-#     username: "@TheBenCentra"             # (User) Name to display in the footer link
-#     url: https://twitter.com/TheBenCentra # URL of your profile (leave blank to not display in footer)
-#     desc: Follow me on Twitter            # Description to display as link title, etc
-#     share: true                           # Include in the "Share" section of posts
 social:
   - name: Twitter
     icon: twitter
@@ -84,7 +75,7 @@ social:
   - name: LinkedIn
     icon: linkedin
     username: Skye Freeman
-    url: https://www.linkedin.com/pub/ben-centra/47/769/60a
+    url: https://www.linkedin.com/in/skye-freeman-501b713b
     desc: Connect with me on LinkedIn
     share: true
 
