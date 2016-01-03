@@ -1,65 +1,78 @@
 #!/usr/bin/env xcrun swift
+
 import Foundation
 
-let args = Process.arguments
-let newPostFileName : String
-let newPostTitle : String
-let newPostCategory : String
+struct Arguments {
+    let fileName : String
+    let postTitle : String
+    let postCategory : String
+    
+    init(args:[String]){
+        self.fileName = args[1]
+        self.postTitle = args[2]
+        self.postCategory = args[3]
+    }
+}
+
+func argumentsValid(args : [String]) -> Bool {
+    return args.count < 4 || args.count > 4
+}
+
+extension NSFileManager {
+    func createDirectoryAtPath(path: String) {
+        do { try self.createDirectoryAtPath(path, withIntermediateDirectories: false, attributes: nil) } catch {}
+    }
+    
+    func createFile(path: String, name: String) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let titleDateString = dateFormatter.stringFromDate(NSDate())
+        let formattedPostFileName = "\(titleDateString)-\(name).markdown"
+        let completeNewPath = "\(path)/\(formattedPostFileName)"
+        self.createFileAtPath(completeNewPath, contents: nil, attributes: nil)
+        return completeNewPath
+    }
+}
+
+extension String {
+    func postInfoString(args : Arguments) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = dateFormatter.stringFromDate(NSDate())
+        return "---\nlayout: post \ntitle: \"\(args.postTitle)\" \ndate: \(dateString) \nauthor: Skye Freeman \ncategories: \(args.postCategory)\n---"
+    }
+}
+
+/* 
+
+   Begin Script
+
+*/
 
 // Check if a new post name was passed in
-if(args.count < 4 || args.count > 4) {
+let tempArgs = Process.arguments
+if(argumentsValid(tempArgs)) {
     print("\n Usage:")
     print("\n   $ ./newpost FILENAME POSTNAME CATEGORY \n")
     exit(0)
-} else {
-    newPostFileName = args[1]
-    newPostTitle = args[2]
-    newPostCategory = args[3]
 }
+let args = Arguments(args: tempArgs)
 
 // The File system manager
 let fileManager = NSFileManager.defaultManager()
 
 // Create a _drafts directory
 let draftsDirPath = "./_drafts"
-do {
-    try fileManager.createDirectoryAtPath(draftsDirPath, withIntermediateDirectories: false, attributes: nil)
-} catch {}
+fileManager.createDirectoryAtPath(draftsDirPath)
 
-// Create a new post file
-let now = NSDate()
-let dateFormatter = NSDateFormatter()
-dateFormatter.dateFormat = "yyyy-MM-dd"
-let titleDateString = dateFormatter.stringFromDate(NSDate())
-let formattedPostFileName = "\(titleDateString)-\(newPostFileName)"
-
-let newPostFilePath = "\(draftsDirPath)/\(formattedPostFileName).markdown"
-if (fileManager.fileExistsAtPath(newPostFilePath)) {
-    print("File at path already exists")
-    exit(0)
-} else {
-    fileManager.createFileAtPath(newPostFilePath, contents: nil, attributes: nil)
-    print("\(newPostFilePath) created.")
-}
-
-// New Post Info String
-//---
-//layout: post
-//title:  "Dummy Post"
-//date:   2015-04-18 08:43:59
-//author: Ben Centra
-//categories: Dummy
-//---
-
-dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-let dateString = dateFormatter.stringFromDate(now)
-let postInfo = "---\nlayout: post \ntitle: \"\(newPostTitle)\" \ndate: \(dateString) \nauthor: Skye Freeman \ncategories: \(newPostCategory)\n---"
+// Create a new post file, return the path
+let finalPath = fileManager.createFile(draftsDirPath, name: args.fileName)
 
 // Write info to file
 do {
-    try postInfo.writeToFile(newPostFilePath, atomically: false, encoding: NSUTF8StringEncoding)
+    try String().postInfoString(args).writeToFile(finalPath, atomically: false, encoding: NSUTF8StringEncoding)
     print("Done")
 } catch {
-    print("Error writing to file \(newPostFilePath)")
+    print("Error writing to file \(finalPath)")
 }
 
