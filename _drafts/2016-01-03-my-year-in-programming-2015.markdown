@@ -12,7 +12,7 @@ I thought that a good place to start might be a look back at my year in programm
 
 Right out of the gate in early 2015, as part of the team at Happy Medium Interactive we shipped [Junganew: A Herd of Sounds][junganewlink], a speech and language adventure iPad app for children learning their sounds.  Being my first "real" gig, the entire process was a paramount learning experience.  I had began work on the app as a freelancer in mid 2014, contracted to help fix memory issues.  After taking my first peek at the codebase something was immediately apparent, the app at this stage was never going to be shippable.  I didn't realize it immediately, but I had walked right into a [coding horror][codinghorror].  The project was almost a year into development, already past deadline and had little budget left.  I had inherited a codebase with multi thousand line view controllers, no documentation and no tests.  Most of the methods were more than 100 lines, and variables were given descriptive names like 'a' and ‘b'.
 
-<img src="{{ site.baseurl }}/assets/post_images/bad-code-bad.jpg” class="profile">
+<img src="../assets/post_images/bad-code-bad.jpg” class="profile">
 
 Right away I informed the team that this was essentially un-refactorable, and would take longer than starting from scratch.  After some discussion, they agreed and I took over as the sole developer on the project.  A couple months of hard work later finally got the product into the app store, followed quickly by a free version.  It was by no means perfect, but something I was sufficiently proud of.  Also a ton of kudos goes to the rest of the [Junganew team][junganewteam], the artwork, audio, animation and writing were outstanding.
 
