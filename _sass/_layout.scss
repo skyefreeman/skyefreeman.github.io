@@ -204,7 +204,11 @@ pre code.hljs {
 /*
  *	Body
  */
+body {
+    background-color: $dark-blue;
+}
 .page-content {
+    background-color: $white;
     .wrapper {
 	@include outer-container;
 	padding: 1em;
