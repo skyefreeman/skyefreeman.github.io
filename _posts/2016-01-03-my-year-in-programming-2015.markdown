@@ -6,9 +6,7 @@ author: Skye Freeman
 categories: Personal
 ---
 
-Starting a blog has been on my todo list for a while now, I can finally check it off!  Now down to business.
-
-I thought that a good place to start might be a look back at my year in programming. Being a new year, there's no better time for reflection.
+Starting a blog has been on my todo list for a while now, I can finally check it off!  I thought that a good place to start might be a look back at my year in programming. Being a new year, there's no better time for reflection.
 
 Right out of the gate in early 2015, as part of the team at Happy Medium Interactive we shipped [Junganew: A Herd of Sounds][junganewlink], a speech and language adventure iPad app for children learning their sounds.  Being my first "real" gig, the entire process was a paramount learning experience.  I had began work on the app as a freelancer in mid 2014, contracted to help fix memory issues.  After taking my first peek at the codebase something was immediately apparent, the app at this stage was never going to be shippable.  I didn't realize it immediately, but I had walked right into a [coding horror][codinghorror].  The project was almost a year into development, already past deadline and had little budget left.  I had inherited a codebase with multi thousand line view controllers, no documentation and no tests.  Most of the methods were more than 100 lines, and variables were given descriptive names like 'a' and ‘b'.
 
