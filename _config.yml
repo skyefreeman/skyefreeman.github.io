@@ -8,19 +8,19 @@ exclude:
 
 # Site settings
 title: Skye Freeman
-subtitle: "iOS Developer | Writer |  Professional Music Listener"
+subtitle: "iOS Developer &middot Professional Music Listener"
 email: skyefreeman@icloud.com
 name: Skye Freeman
-description: > 
-  Skye Freeman is an iOS Developer and writer.  He loves to jam to a great tune, and can probably be found at the gym or looking at great view.
-  
+jobtitle: "iOS Developer"
+rawurl: "skyefreeman.io"
+description: Skye Freeman is a Software Developer.  He loves to jam to an awesome tune. He can probably be found at his computer, at the gym, or reading a book.
+
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://skyefreeman.io" # the base hostname & protocol for your site
 cover: "/assets/header_image.jpg"
-logo: "/assets/logo.png"
 
 # Build settings
 markdown: kramdown
@@ -38,19 +38,21 @@ jekyll-archives:
     category: '/category/:name/'
     tag: '/tag/:name/'
 
+
+
 # Disqus comments
-disqus_shortname: bencentra
+#disqus_shortname: bencentra
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
 
 # Category descriptions (for archive pages)
 descriptions:
-  - cat: jekyll
-    desc: "Posts describing Jekyll setup techniques."
+  - cat: Personal
+    desc: ""
 
-  - cat: dummy
-    desc: "Just some placeholder posts, lorem ipsum and the rest."
+  - cat: Swift
+    desc: ""
 
 # Social icons and sharing options
 #
