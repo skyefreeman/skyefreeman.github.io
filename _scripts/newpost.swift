@@ -4,18 +4,14 @@ import Foundation
 
 struct Arguments {
     let fileName : String
-    let postTitle : String
-    let postCategory : String
     
     init(args:[String]){
         self.fileName = args[1]
-        self.postTitle = args[2]
-        self.postCategory = args[3]
     }
 }
 
 func argumentsValid(args : [String]) -> Bool {
-    return args.count < 4 || args.count > 4
+    return args.count == 2
 }
 
 extension NSFileManager {
@@ -39,7 +35,7 @@ extension String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = dateFormatter.stringFromDate(NSDate())
-        return "---\nlayout: post \ntitle: \"\(args.postTitle)\" \ndate: \(dateString) \nauthor: Skye Freeman \ncategories: \(args.postCategory)\n---"
+        return "---\nlayout: post \ntitle: \"\" \ndate: \(dateString) \nauthor: Skye Freeman \ncategories: \n---"
     }
 }
 
@@ -51,7 +47,7 @@ extension String {
 
 // Check if a new post name was passed in
 let tempArgs = Process.arguments
-if(argumentsValid(tempArgs)) {
+if(!argumentsValid(tempArgs)) {
     print("\n Usage:")
     print("\n   $ ./newpost FILENAME POSTNAME CATEGORY \n")
     exit(0)
