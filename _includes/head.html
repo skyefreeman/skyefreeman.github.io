@@ -5,9 +5,9 @@
 
   <title>
     {% if page.title %}
-      {{ site.title | append: ' &middot ' | append: page.title}}
+      {{ site.title | append: ' | ' | append: page.title}}
     {% else %}
-      {{ site.title | append: ' &middot ' | append: site.jobtitle }}
+      {{ site.title | append: ' | ' | append: site.jobtitle }}
     {% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   {% if site.name %}
