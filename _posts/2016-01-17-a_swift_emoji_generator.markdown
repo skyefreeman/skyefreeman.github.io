@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: “String's, Emoji's and Generator's"
+title: String's, Emoji's and Generator's
 date: 2016-01-17 23:24:50 
 author: Skye Freeman 
 categories: 
