@@ -14,4 +14,4 @@ Focused practice writing beautiful code.  It's very easy to convince yourself th
 
 Master your tools.  When starting out it's very easy to overwhelm yourself with wanting to know and learn everything.  "Hey, all the developers making the most money seem to know x or y, or use this text editor, or use that language...", stop.  Sure, watch out for industry shifts and new tools that make you better at what you already do.  But this obsession with skipping to new things too often will cause you to burn out really quickly, there will always be an endless supply of new things to learn, and you have to come to terms that you might not be able to learn everything.  Find a language you like solve tons of problems with it. Look for tools that allow you to solve these problems faster.  Master what you are confortable with, then look for new things to learn.
 
-
+In the end, the real skill set that software developer has is his or her ability to solve problems.  The rest is just syntax and abstractions.  Work on your ability to solve a multitude of problems first.  The rest will come naturally.
