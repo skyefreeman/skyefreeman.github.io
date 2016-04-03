@@ -16,7 +16,7 @@ a == b // true
 a == c // false
 {% endhighlight %}
 
-More specifically, ‘==‘ tests equality between two types that conform to the 'Equatable' protocol.  In the example above we define 3 constants of type Int (which conforms to Equatable).  Other Equatable conforming types defined in Swift’s standard library are Float, Double and String [(There are many, many more)][equatable-link].
+More specifically, ‘==‘ tests equality between two types that conform to the Equatable protocol.  In the example above we define 3 constants of type Int (which conforms to Equatable).  Other Equatable conforming types defined in Swift’s standard library are Float, Double and String [(There are many, many more)][equatable-link].
 
 Let's see what would happen were we to check equality between two instances of a custom defined type.
 
