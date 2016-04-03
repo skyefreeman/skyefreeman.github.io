@@ -1,0 +1,86 @@
+---
+layout: post 
+title: Swift - Comparable
+date: 2016-04-03 17:35:51 
+author: Skye Freeman 
+categories: Programming
+---
+
+My last blog post I wrote briefly about Swift's "Equatable" protocol, which allows the use of '==' between custom defined types. Naturally, I feel its fitting to talk a bit about Equatable's close relative -- the "Comparable" protocol.
+
+Adopting the Comparable protocol allows for a custom type to define its own rule for the <, <=, >, >= infix operators.  Before we see this in action, lets first describe an object that models a user's bank account.
+
+{% highlight swift %}
+struct BankAccount {
+    let identifier: Int
+    var balance: Double
+}
+{% endhighlight %}
+
+Here we create a struct called "BankAccount" that requires a identifier constant of type Int, and a balance variable of type Double. Next, let try defining and comparing two separate BankAccount objects.
+
+{% highlight swift %}
+let smallAccount = BankAccount(identifier: 123, balance: 100.0)
+let largeAccount = BankAccount(identifier: 123, balance: 1000.0)
+
+smallAccount < largeAccount // error
+{% endhighlight %}
+
+Here you should receive an error saying: "Binary operator '<' cannot be applied to two 'BankAccount' operands".  This is because our BankAccount struct has not defined how two BankAccount instances should be campared.  Lets fix this by making BankAccount conform to Comparable.
+
+{% highlight swift %}
+struct BankAccount: Comparable {
+    let identifier: Int
+    var balance: Double
+}
+
+func <(lhs: BankAccount, rhs: BankAccount) -> Bool {
+    return lhs.balance < rhs.balance
+}
+{% endhighlight %}
+
+Now we define '<' between two BankAccount instances to return true if the left hand side BankAccount's balance is less than the right hand sides balance. Notice how we only need to define the '<' operator.  By doing this, Swift can infer the definition of >, >= and <=, without requiring individual functions describing each.
+
+There's still one problem before we have a program that builds.  It turns out that Comparable inherits directly from the Equatable protocol, which means we must provide a definition to the '==' operator as well.
+
+{% highlight swift %}
+struct BankAccount: Comparable {
+    let identifier: Int
+    let balance: Double
+}
+
+func ==(lhs: BankAccount, rhs: BankAccount) -> Bool {
+    return lhs.balance == rhs.balance
+}
+ 
+func <(lhs: BankAccount, rhs: BankAccount) -> Bool {
+    return lhs.balance < rhs.balance
+}
+{% endhighlight %}
+
+Awesome. Now let's test out some BankAccount comparisons one more time.
+
+{% highlight swift %}
+let smallAccount = BankAccount(identifier: 123, balance: 10000.0)
+let largeAccount = BankAccount(identifier: 123, balance: 100000.0)
+
+smallAccount < largeAccount  // true
+smallAccount <= largeAccount // true
+
+smallAccount > largeAccount  // false
+smallAccount >= largeAccount // false
+
+smallAccount != largeAccount // true
+smallAccount == largeAccount // false
+{% endhighlight %}
+
+Keep in mind though, its up to you, the developer, to make sure that adopting the Comparable protocol does in fact make your code base more readable/maintainable. Without adopting the comparable protocol, we could have instead written:
+
+{% highlight swift %}
+let smallAccount = BankAccount(identifier: 123, balance: 10000.0)
+let largeAccount = BankAccount(identifier: 123, balance: 100000.0)
+
+smallAccount.balance < largeAccount.balance // true
+{% endhighlight %}
+
+Which is perfectly valid code, and one could argue is more understandable than comparing the objects directly. Be sure that adopting either the Comparable or Equatable protocol is in fact the right design decision, rather than just defaulting to the most 'terse' option.
