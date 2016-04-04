@@ -6,7 +6,7 @@ author: Skye Freeman
 categories: Programming
 ---
 
-My last blog post I wrote briefly about Swift's "Equatable" protocol, which allows the use of '==' between custom defined types. Naturally, I feel its fitting to talk a bit about Equatable's close relative -- the "Comparable" protocol.
+My last blog post I wrote briefly about [Swift's Equatable protocol][equatable-link], which allows the use of == and != between custom defined types. Naturally, I feel its fitting to talk a bit about Equatable's close relative -- the [Comparable protocol][comparable-link].
 
 Adopting the Comparable protocol allows for a custom type to define its own rule for the <, <=, >, >= infix operators.  Before we see this in action, lets first describe an object that models a user's bank account.
 
@@ -17,7 +17,7 @@ struct BankAccount {
 }
 {% endhighlight %}
 
-Here we create a struct called "BankAccount" that requires a identifier constant of type Int, and a balance variable of type Double. Next, let try defining and comparing two separate BankAccount objects.
+Here we create a struct called BankAccount that requires a identifier constant of type Int, and a balance variable of type Double. Next, let's try defining and comparing two separate BankAccount objects.
 
 {% highlight swift %}
 let smallAccount = BankAccount(identifier: 123, balance: 100.0)
@@ -26,7 +26,7 @@ let largeAccount = BankAccount(identifier: 123, balance: 1000.0)
 smallAccount < largeAccount // error
 {% endhighlight %}
 
-Here you should receive an error saying: "Binary operator '<' cannot be applied to two 'BankAccount' operands".  This is because our BankAccount struct has not defined how two BankAccount instances should be campared.  Lets fix this by making BankAccount conform to Comparable.
+Here you should receive an error saying: "Binary operator '<' cannot be applied to two 'BankAccount' operands".  This is because our BankAccount struct has not defined how two BankAccount instances should be compared.  Lets fix this by making BankAccount conform to Comparable.
 
 {% highlight swift %}
 struct BankAccount: Comparable {
@@ -83,4 +83,7 @@ let largeAccount = BankAccount(identifier: 123, balance: 100000.0)
 smallAccount.balance < largeAccount.balance // true
 {% endhighlight %}
 
-Which is perfectly valid code, and one could argue is more understandable than comparing the objects directly. Be sure that adopting either the Comparable or Equatable protocol is in fact the right design decision, rather than just defaulting to the most 'terse' option.
+Which is perfectly valid, and one could argue is more understandable than comparing the objects directly. Be sure that adopting either the Comparable or Equatable protocol is in fact the right design decision, rather than just defaulting to the most 'terse' option.
+
+[equatable-link]: http://skyefreeman.io/programming/2016/03/09/swift_equatable.html
+[comparable-link]: https://developer.apple.com/library/watchos/documentation/Swift/Reference/Swift_Comparable_Protocol/index.html
