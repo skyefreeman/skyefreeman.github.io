@@ -35,7 +35,7 @@ extension String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = dateFormatter.stringFromDate(NSDate())
-        return "---\nlayout: post \ntitle: \"\" \ndate: \(dateString) \nauthor: Skye Freeman \ncategories: \n---"
+        return "---\nlayout: post \ntitle: \ndate: \(dateString) \nauthor: Skye Freeman \ncategories: \n---"
     }
 }
 
