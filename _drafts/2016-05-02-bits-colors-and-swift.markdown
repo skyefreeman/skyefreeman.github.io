@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: Bits, Colors and Swift
+title: Swift: Bits and Colors
 date: 2016-05-02 08:47:33 
 author: Skye Freeman 
 categories: Programming
@@ -83,7 +83,7 @@ rightShift >> 4 // 0b00000001
 rightShift >> 5 // 0b00000000
 {% endhighlight %}
 
-**Hexadecimal and Colors**
+**Hexadecimal Colors**
 
 While working with a designer it is not uncommon to receive a color value represented in hexadecimal rather than RGB decimal format. Rather than converting these values using one of the numerous [conversion tools on google][color-conversions], lets instead utilize what we've learned about bit manipulation to create our own handy UIColor extension which converts these values for us.
 
