@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: Swift Coordinators
+title: Swift - Coordinators
 date: 2016-02-23 15:30:58 
 author: Skye Freeman 
 categories: Programming
