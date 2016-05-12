@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: Swift: Bits and Colors
+title: Swift - Bits and Colors
 date: 2016-05-02 08:47:33 
 author: Skye Freeman 
 categories: Programming
