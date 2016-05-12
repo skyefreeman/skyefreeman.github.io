@@ -10,7 +10,7 @@ While perusing Apple's Swift language guide, I came across an interesting sectio
 
 **AND**
 
-The Bitwise AND "&" operator combines the bits of two numbers, maintaining the value of 1 for each bit ONLY if they are both 1.
+The Bitwise AND (&) operator combines the bits of two numbers, maintaining the value of 1 for each bit ONLY if they are both 1.
 
 {% highlight swift %}
 let firstAND: UInt8 = 0b11110000
@@ -23,7 +23,7 @@ let secondANDthird = secondAND & thirdAND // 0b00000001
 
 **OR**
 
-The Bitwise OR "|" operator combines the bits of two numbers, maintaining a value of 1 for each bit that is 1 in EITHER of the pertaining numbers.
+The Bitwise OR (|) operator combines the bits of two numbers, maintaining a value of 1 for each bit that is 1 in EITHER of the pertaining numbers.
 
 {% highlight swift %}
 let firstOR: UInt8 =  0b01010101
@@ -36,7 +36,7 @@ let secondORthird: UInt8 = secondOR | thirdOR // 0b10101011
 
 **XOR**
 
-The Bitwise XOR "^" operator (exclusive or) combines the bits of two numbers, maintaining a value of 1 for each bit ONLY if the value is different between each number.
+The Bitwise XOR (^) operator (exclusive or) combines the bits of two numbers, maintaining a value of 1 for each bit ONLY if the value is different between each number.
 
 {% highlight swift %}
 let firstXOR = 0b00000011
@@ -47,7 +47,7 @@ let firstXORsecond = firstXOR ^ secondXOR // 0b00000010
 
 **NOT**
 
-The Bitwise NOT "~" operator 'flips' each bit of the input number.
+The Bitwise NOT (~) operator 'flips' each bit of the input number.
 
 {% highlight swift %}
 let beforeNOT: UInt8 = 0b00000000
@@ -56,7 +56,7 @@ let afterNOT = ~beforeNOT // 0b11111111
 
 **Left Shift**
 
-The Bitwise Left Shift "<<" operator does exactly what the name infers - shifts all bits to the left. Using the operator requires specification to how many spaces the numbers bits should be shifted. A left shift essentially doubles the current integer amount. An important tidbit (bit humor?) is that Swift does not allow an operator to overflow by default, meaning if bits are shifted beyond integer bounds a crash will occur.
+The Bitwise Left Shift (<<) operator does exactly what the name infers - shifts all bits to the left. Using the operator requires specification to how many spaces the numbers bits should be shifted. A left shift essentially doubles the current integer amount. An important tidbit (bit humor?) is that Swift does not allow an operator to overflow by default, meaning if bits are shifted beyond integer bounds a crash will occur.
 
 {% highlight swift %}
 
@@ -71,7 +71,7 @@ leftShift << 8 // error
 
 **Right Shift**
 
-The Bitwise Right Shift ">>" operator is just like its left counterpart, except that the input bits are shifted to the right. An important difference is that a right shifted number will be capped at zero (i.e. if shifted beyond its bounds, the result will default to 0).
+The Bitwise Right Shift (>>) operator is just like its left counterpart, except that the input bits are shifted to the right. An important difference is that a right shifted number will be capped at zero (i.e. if shifted beyond its bounds, the result will default to 0).
 
 {% highlight swift %}
 let rightShift: UInt8 = 0b00010000
