@@ -3,70 +3,75 @@
 import Foundation
 
 struct Arguments {
-    let fileName : String
+    private let args: [String]
     
-    init(args:[String]){
-        self.fileName = args[1]
-    }
-}
+    var fileName: String?
 
-func argumentsValid(args : [String]) -> Bool {
-    return args.count == 2
-}
-
-extension NSFileManager {
-    func createDirectoryAtPath(path: String) {
-        do { try self.createDirectoryAtPath(path, withIntermediateDirectories: false, attributes: nil) } catch {}
+    var valid: Bool {
+        return args.count == 2
     }
     
-    func createFile(path: String, name: String) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let titleDateString = dateFormatter.stringFromDate(NSDate())
-        let formattedPostFileName = "\(titleDateString)-\(name).markdown"
-        let completeNewPath = "\(path)/\(formattedPostFileName)"
-        self.createFileAtPath(completeNewPath, contents: nil, attributes: nil)
-        return completeNewPath
+    init(args:[String]) {
+        self.args = args
+        if args.count > 1 {
+            self.fileName = args[1]
+        }
     }
 }
 
 extension String {
-    func postInfoString(args : Arguments) -> String {
-        let dateFormatter = NSDateFormatter()
+    static func postInfoString(withArgs args : Arguments) -> String {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateString = dateFormatter.stringFromDate(NSDate())
+        let dateString = dateFormatter.string(from: Date())
         return "---\nlayout: post \ntitle: \ndate: \(dateString) \nauthor: Skye Freeman \ncategories: \n---"
     }
 }
 
-/* 
+extension FileManager {
+    func createDirectory(withPath path: String) {
+        do {
+            try createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
+        } catch {}
+    }
 
-   Begin Script
+    func createFile(withPath path: String, name: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let titleDateString = dateFormatter.string(from: Date())
+        let formattedPostFileName = "\(titleDateString)-\(name).markdown"
+        let completeNewPath = "\(path)/\(formattedPostFileName)"
+        
+        createFile(atPath: completeNewPath, contents: nil, attributes: nil)
+        return completeNewPath
+    }
+}
 
-*/
+/* Script */
 
 // Check if a new post name was passed in
-let tempArgs = Process.arguments
-if(!argumentsValid(tempArgs)) {
+let tempArgs = CommandLine.arguments
+let args = Arguments(args: tempArgs)
+if args.valid == false {
     print("\n Usage:")
     print("\n   $ ./newpost FILENAME POSTNAME CATEGORY \n")
     exit(0)
 }
-let args = Arguments(args: tempArgs)
 
 // The File system manager
-let fileManager = NSFileManager.defaultManager()
+let fileManager = FileManager.default
 
 // Create a _drafts directory
 let draftsDirPath = "./_drafts"
-fileManager.createDirectoryAtPath(draftsDirPath)
+fileManager.createDirectory(withPath: draftsDirPath)
 
 // Create a new post file, return the path
-let finalPath = fileManager.createFile(draftsDirPath, name: args.fileName)
+let newFileName = args.fileName
+let finalPath = fileManager.createFile(withPath: draftsDirPath, name: args.fileName!)
 
 // Write info to file
 do {
-    try String().postInfoString(args).writeToFile(finalPath, atomically: false, encoding: NSUTF8StringEncoding)
+    try String.postInfoString(withArgs: args).write(toFile: finalPath, atomically: false, encoding: String.Encoding.utf8)
     print("Done")
 } catch {
     print("Error writing to file \(finalPath)")
