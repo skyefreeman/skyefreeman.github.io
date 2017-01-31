@@ -1,0 +1,8 @@
+Trimming down your controllers with builders.
+
+Some of the most involved and repetetive code we write while building an application is the instantiation and setup of our objects.
+
+If we are lucky, we simply set a variable to an initializer and move on.  Early in a development cycle this is common, however what do we do when our objects become gradually more complicated and fragmented?
+
+Abstract away instantiation and setup behind a builder object.
+
