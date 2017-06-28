@@ -102,7 +102,7 @@ pre code.hljs {
 .navigation {
     padding: 0 1em;
     margin: 0;
-    background-color: $dark-blue;
+    background-color: $black;
     a {
 	color: $white;
     }
@@ -205,7 +205,7 @@ pre code.hljs {
  *	Body
  */
 body {
-    background-color: $dark-blue;
+    background-color: $black;
 }
 .page-content {
     background-color: $white;
@@ -247,7 +247,7 @@ body {
     .site-header-container {
 	color: $white;
 	text-shadow: 0 2px 1px rgba(0,0,0,0.33);
-	background-color: $dark-blue;
+	background-color: $black;
 	.site-header{
 	    .title {
 		font-size: modular-scale(7);
@@ -364,7 +364,7 @@ body {
 .site-footer {
     $link-color: $white;
     padding: 1em 1em 1em 1em;
-    background-color: $dark-blue;
+    background-color: $black;
     color: $white;
     font-size: 1.0em;
     bottom: 0;
